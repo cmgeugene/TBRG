@@ -27,11 +27,9 @@ private:
 
     vector<Item*> inventory;
 
-    Character(string name = "") : name(name), level(1), heelth(200), int maxHealth(200), attack(30), experience(0), gold(0)
+    Character(string name) : name(name), level(1), health(200), maxHealth(200), attack(30), experience(0), gold(0)
     {
-        cout << "케릭터 이름을 정해주세요: " << endl;
-        cin >> name;
-        cout << name << " 생성 :" << level << " 레벨, " << "체력: " << heelth << "경험치: " << experience << "골드: " << gold << endl;
+        cout << name << " 생성 :" << " 레벨, " << level << "체력: " << health << "경험치: " << experience << "골드: " << gold << endl;
     }
 
     Character(const Character&) = delete;
@@ -39,11 +37,11 @@ private:
 
 public:
 
-    static Character* getInstance(string name = "")
+    static Character* getInstance(string name)
     {
         if (instance == nullptr)
         {
-            instance = new Character();
+            instance = new Character(name);
         }
         return instance;
     }
